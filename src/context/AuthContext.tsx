@@ -80,13 +80,14 @@ const base64urlDecode = (base64url: string): ArrayBuffer => {
             type: "public-key"
         }));
     }
-    console.log("Updated allowCredentials:", JSON.stringify(options.allowCredentials, null, 2));
+    console.log("options: ",options)
 
             const credential = await navigator.credentials.get({ publicKey: options });
             if (!credential) {
                 alert("Passkey authentication failed.");
                 return;
             }
+            console.log("Credential:", credential);
     
             const response = await verifyLoginWithPasskey(credential);
             console.log("response: ",response)
